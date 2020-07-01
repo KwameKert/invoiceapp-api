@@ -5,9 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "env-cmd -f ./config/test.env jest --watch",
+    "test": "jest --watch",
     "start": " node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env  node src/index.js  "
+    "dev": "nodemon src/index.js  "
   },
   "jest": {
     "testEnvironment": "node"
@@ -16,20 +16,37 @@
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
+    "mongodb-memory-server": "^6.6.1",
+    "mongoose": "^5.9.20",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/register": "^7.10.4",
+    "env-cmd": "^10.1.0",
     "jest": "^26.1.0",
-    "supertest": "^4.0.2",
-    "env-cmd": "^10.1.0"
+    "supertest": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   }
 }
