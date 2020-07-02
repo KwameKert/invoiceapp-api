@@ -10,5 +10,5 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json())
 
-export default  app
-//module.exports = app 
+
+module.exports = app 

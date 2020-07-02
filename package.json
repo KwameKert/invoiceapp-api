@@ -2,14 +2,17 @@
   "name": "taskmanager",
   "version": "1.0.0",
   "description": "managing tasks efficiently",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": " jest --watch",
     "start": " node src/index.js",
     "dev": "nodemon src/index.js  "
   },
   "jest": {
+    "globalSetup": "./jestconfig/setup.js",
+    "globalTeardown": "./jestconfig/teardown.js",
+    "setupFilesAfterEnv": ["./jestconfig/setupAfterEnv.js"],
+    "testMatch": ["**/__tests__/**"],
     "testEnvironment": "node"
   },
   "author": "kwamekert",

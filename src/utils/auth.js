@@ -67,7 +67,7 @@ function getUserToken({id, username}) {
 }
 
 
-module.exports = {
+export {
     isPasswordAllowed,
     authMiddleware,
     userToJSON,

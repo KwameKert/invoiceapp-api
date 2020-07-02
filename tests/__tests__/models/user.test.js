@@ -1,8 +1,5 @@
-const app = require('../../src/app');
-//const User = require('../../src/models/User.js')
-import User from '../../src/models/User';
 import mongoose from 'mongoose';
-
+const User = require('../../../src/models/User')
 
 let newUser = {
     username: 'kwamekert',
@@ -12,17 +9,9 @@ let newUser = {
 }
 
 
-
-beforeEach(()=>{
-    cleanDatabase();
-
+test("new test", ()=>{
+    expect(4).toBe(2+2)
 })
-
-async function cleanDatabase(){
-     await User.deleteMany();
-}
-
-
 
 test("create and save user", async()=>{
     const validUser = new User(newUser);
