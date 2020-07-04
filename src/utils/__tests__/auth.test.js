@@ -1,5 +1,5 @@
 
-import { isPasswordAllowed, userToJSON } from '../../../src/utils/auth';
+import { isPasswordAllowed, userToJSON } from '../auth';
 
 
 

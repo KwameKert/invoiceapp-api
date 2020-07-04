@@ -1,9 +1,8 @@
 
 //const { clearDatabase} =  require('../lib/MemoryDatabaseServer');
-const {clearDatabase, connectDatabase, closeDatabase}  = require('../tests/lib/MemoryDatabaseServer');
+const {clearDatabase, connectDatabase, closeDatabase}  = require('./lib/MemoryDatabaseServer');
 
 beforeAll( async ()=> {
-
     await connectDatabase();
 })
 

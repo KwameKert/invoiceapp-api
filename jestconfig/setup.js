@@ -1,4 +1,4 @@
-const {connectDatabase}  = require('../tests/lib/MemoryDatabaseServer');
+const {connectDatabase}  = require('./lib/MemoryDatabaseServer');
 console.log("setup up")
 module.exports = async () => {
   await connectDatabase();

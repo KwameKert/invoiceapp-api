@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const User = require('../../../src/models/User')
+const User = require('../User')
 
 let newUser = {
     username: 'kwamekert',
@@ -9,9 +9,7 @@ let newUser = {
 }
 
 
-test("new test", ()=>{
-    expect(4).toBe(2+2)
-})
+
 
 test("create and save user", async()=>{
     const validUser = new User(newUser);
