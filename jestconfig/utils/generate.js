@@ -8,9 +8,9 @@ const getPassword = faker.internet.password;
 
 function buildUser(){
     return {
-        username: getUsername,
-        email: getEmail,
-        password: getPassword
+        username: getUsername(),
+        email: getEmail(),
+        password: getPassword()
     }
 }
 
@@ -30,10 +30,19 @@ function buildRes(overrides = {}) {
   return res
 }
 
+function loginForm(overides){
+    return {
+        username: getUsername(),
+        password: getPassword(),
+        ...overides
+    }
+
+}
 
 module.exports = {
     buildUser,
     buildReq,
-    buildRes
+    buildRes,
+    loginForm
 
 }

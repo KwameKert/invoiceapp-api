@@ -2,7 +2,7 @@ const expressJwt = require('express-jwt');
 const {omit} = require('lodash');
 const crypto = require('crypto')
 const secret = 'task-secret' 
-
+const jwt = require('jsonwebtoken')
 
 
 const dayInSeconds = 60 * 24 * 60
@@ -54,7 +54,7 @@ function  userToJSON(user){
 
 
 function getUserToken({id, username}) {
-  const issuedAt = Math.floor(now() / 1000)
+  const issuedAt = Math.floor(Date.now() / 1000)
   return jwt.sign(
     {
       id,

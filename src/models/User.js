@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const {
     userToJSON,
+    getUserToken
 }  = require('../utils/auth');
 
 
@@ -37,6 +38,16 @@ userSchema.methods.toJSON = function() {
 
 
     return userToJSON(user);
+}
+
+
+userSchema.methods.generateToken = async function(){
+
+    const user = this
+    const token = getUserToken({id: user.id, username: user.username});
+
+    return token;
+
 }
 
 
