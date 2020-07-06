@@ -1,21 +1,24 @@
 import faker from 'faker'
+import mongoose from 'mongoose'
 
 const getUsername = faker.internet.userName;
 const getEmail = faker.internet.email;
 const getPassword = faker.internet.password;
+const getId  = new mongoose.Types.ObjectId();
 
 
 
-function buildUser(){
+function buildUser(overide){
     return {
         username: getUsername(),
         email: getEmail(),
-        password: getPassword()
+        password: getPassword(),
+        ...overide
     }
 }
 
 
-function buildReq({...overides}){
+function buildReq({...overides} = {}){
     const req = { body: {}, params: {}, ...overides };
     return req;
 }

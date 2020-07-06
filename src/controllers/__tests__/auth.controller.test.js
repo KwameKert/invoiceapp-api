@@ -1,25 +1,24 @@
 import {buildReq, buildRes, buildUser, loginForm } from '../../../jestconfig/utils/generate.js';
 import * as   AuthController  from '../auth.controller';
-//import { showCollections } from '../../../jestconfig/lib/MemoryDatabaseServer.js';
 import User from '../../models/User';
-
 
 const newUser = buildUser();
 
-const userReq = buildReq({body: newUser});
-const userRes = buildRes();
+function returnExpectations(response, statusCode){
+
+    expect(response.send).toHaveBeenCalledTimes(1);
+    expect(response.status).toHaveBeenCalledWith(statusCode)
+}
 
 
 test("Register new user", async()=>{
 
-
+    const userReq = buildReq({body: newUser});
+    const userRes = buildRes();
+    
     await AuthController.register(userReq, userRes);
 
-    //let response = res.send.mock.calls[0][0];
-
-    expect(userRes.send).toHaveBeenCalledTimes(1);
-    expect(userRes.status).toHaveBeenCalledWith(201);
-
+    returnExpectations(userRes, 201)
 })
 
 
@@ -31,8 +30,7 @@ test("Email already exists ",async()=>{
 
     await AuthController.register(firstReq, firstRes);
     
-    expect(firstRes.send).toHaveBeenCalledTimes(1);
-    expect(firstRes.status).toHaveBeenCalledWith(201);
+    returnExpectations(firstRes, 201)
     
     //registering second user
     let secondReq = buildReq({body : {...newUser, email: 'kwame@gmail.com'} } );
@@ -40,8 +38,8 @@ test("Email already exists ",async()=>{
 
     await AuthController.register(secondReq, secondRes);
 
-    expect(secondRes.send).toHaveBeenCalledTimes(1);
-    expect(secondRes.status).toHaveBeenCalledWith(400);
+    
+    returnExpectations(secondRes, 400)
 
 } )
 
@@ -56,11 +54,7 @@ test("Login user ", async()=>{
     //save user 
     await AuthController.register(req, res);
    
-
-    //let response1 = res.send.mock.calls[0][0];
-
-    expect(res.send).toHaveBeenCalledTimes(1);
-    expect(res.status).toHaveBeenCalledWith(201);
+    returnExpectations(res, 201);
     
     
     let loginReq = buildReq({body: loginForm({username: 'kwamekert', password: 'kwamepass'})});
@@ -68,15 +62,10 @@ test("Login user ", async()=>{
 
     await AuthController.login(loginReq, loginRes );
 
-
     //let response = loginRes.send.mock.calls[0][0];
-    
-    expect(loginRes.send).toHaveBeenCalledTimes(1);
-    expect(loginRes.status).toHaveBeenCalledWith(202);
+    returnExpectations(loginRes, 202);
+
 
 })
 
 
-
-
-    

@@ -15,7 +15,7 @@
       "./jestconfig/setupAfterEnv.js"
     ],
     "testMatch": [
-      "**/__tests__/**"
+      "**/__tests__/*"
     ],
     "testEnvironment": "node"
   },
