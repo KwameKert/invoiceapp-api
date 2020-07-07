@@ -95,3 +95,15 @@ test("fetch user list", async ()=>{
     returnExpectations(userListRes, 200);
 
 })
+
+
+test("no users found ", async()=>{
+    
+    let req = buildReq();
+    let res = buildRes();
+
+    await UserController.fetchUsers(req, res);
+
+    returnExpectations(res, 204);
+
+} )

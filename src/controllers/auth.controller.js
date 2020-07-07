@@ -7,7 +7,7 @@ const responseApi = (res, status, data, message)=>{
 async function register (req, res ){
     
    const newUser = new User(req.body);
-
+    
     try{
        
         let userFound = await User.findOne({email: newUser.email});
@@ -36,7 +36,7 @@ async function login(req, res){
     }
     if(!req.body.password){
       return  responseApi(res, 400, null, "password cannot be null")
-    }
+ }
     
  try{   
     const user = new User(req.body);

@@ -22,9 +22,7 @@ async function fetchUserById(req, res){
         return responseApi(res, 200, user, "user found");
 
     }catch(e){
-        
         return responseApi(res, 500, null, e.message);
-    
     }
 }
 
@@ -32,7 +30,9 @@ async function fetchUsers(req, res){
     
     try{
         const users = await User.find({});
-        if(!users){
+        let count = await User.countDocuments({});
+        
+        if(count == 0){
             return responseApi(res, 204, null, 'No users found')
         }
 
