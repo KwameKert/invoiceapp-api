@@ -4,9 +4,9 @@
   "description": "managing tasks efficiently",
   "main": "index.js",
   "scripts": {
-    "test": " jest --watch",
+    "test": "env-cmd -f ./.env jest --watch",
     "start": " node src/index.js",
-    "dev": "nodemon src/index.js  "
+    "dev": "env-cmd -f ./.env nodemon src/index.js  "
   },
   "jest": {
     "globalSetup": "./jestconfig/setup.js",

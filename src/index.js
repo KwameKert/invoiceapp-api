@@ -1,5 +1,3 @@
-//require = require("esm")(module/*, options*/)
-//module.exports = require("./app.js")
 const app = require('./app');
 const port = process.env.PORT
 

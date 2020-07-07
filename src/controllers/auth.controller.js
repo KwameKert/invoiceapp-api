@@ -1,4 +1,4 @@
-import User from '../models/User.js';
+const  User = require('../models/User.js') ;
 
 const responseApi = (res, status, data, message)=>{
     return res.status(status).send({data, message});
@@ -69,7 +69,7 @@ async function login(req, res){
 
 
 
-export {
+module.exports = {
     register,
     login
 }
