@@ -9,14 +9,13 @@ const userId = new mongoose.Types.ObjectId();
 
 
 test("Create new user" , async()=>{
-    
-    await request(app).post('register').send({
-        username: 'kwamekert',
-        email: 'kwame@gmail.com',
-        password: 'kwamepass'
-    }).expect(201)
-    
+   
+    const user = buildUser();
 
+    const response =    await request(app).get('/api/auth/test').send(user)
+
+     
+   expect(response.statusCode).toEqual(201);
 })
 
 

@@ -7,7 +7,7 @@ const responseApi = (res, status, data, message)=>{
 async function register (req, res ){
     
    const newUser = new User(req.body);
-    
+   
     try{
        
         let userFound = await User.findOne({email: newUser.email});
@@ -69,7 +69,17 @@ async function login(req, res){
 
 
 
+async function testController(req, res){
+    
+    const user =new User(req.body)
+    const savedUser = await user.save();
+
+    return res.status(201).send({data: savedUser, message:'user saved'})
+
+}
+
 module.exports = {
     register,
-    login
+    login,
+    testController
 }

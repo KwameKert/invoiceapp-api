@@ -37,7 +37,9 @@ userSchema.methods.toJSON = function() {
     const user = this
 
 
-    return userToJSON(user);
+    let objectUser =  userToJSON(user).toObject();
+
+    return objectUser
 }
 
 
