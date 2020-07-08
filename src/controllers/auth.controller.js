@@ -32,7 +32,6 @@ async function register (req, res ){
 
 async function login(req, res){
    
-
     if(!req.body.username){
        return  responseApi(res, 400, null, "username cannot be null");
     }
@@ -74,10 +73,8 @@ async function login(req, res){
 async function userProfile(req, res){
     
     const user = req.user
-
-    console.log(user)
+    
     if(user){
-        
         return responseApi(res, 200, user, "user profile found ")
     }else{
         

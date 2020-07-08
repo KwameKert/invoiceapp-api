@@ -5,7 +5,7 @@ const auth = async (req,res, next) =>{
     try{
         const token = req.header("Authorization").replace('Bearer ', '');
         const decoded = await jwt.verify(token, 'invoicesecret');
-        const user = await User.findOne({_id: decoded._id})
+        const user = await User.findOne({_id: decoded.id})
 
         if(user){
             req.user = user

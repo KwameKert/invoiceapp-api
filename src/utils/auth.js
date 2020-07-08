@@ -1,7 +1,7 @@
 const expressJwt = require('express-jwt');
 const {omit} = require('lodash');
 const crypto = require('crypto')
-const secret = 'task-secret' 
+const secret = 'invoicesecret' 
 const jwt = require('jsonwebtoken')
 
 

@@ -40,18 +40,14 @@ test("Fetch user profile ", async ()=> {
     const user = buildUser();
     let registerResponse =     await request(app).post(`${url}/register`).send(user);
 
-    const token = registerResponse.body.data.token
+    let token = registerResponse.body.data.token
 
+    console.log(token)
     const profileResponse = await request(app)
                                     .get(`${url}/me`)
                                     .set('Authorization', `Bearer ${token}`)
                                     .send();
 
-//    const response = await request(app)
-  //                          .post(`${url}/me`)
-  //                          .send();
-
-   // console.log(response)
-    //expect(response.statusCode).toEqual(200);
+    expect(profileResponse.statusCode).toEqual(200);
 
 })
