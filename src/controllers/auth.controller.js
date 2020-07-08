@@ -16,7 +16,9 @@ async function register (req, res ){
         }else{
 
             let saveUser =  await newUser.save();
-            return responseApi(res, 201, saveUser, 'New registered');
+            const token = await saveUser.generateToken();
+
+            return responseApi(res, 201, {user: saveUser,token} , 'New registered');
         
         }
 
@@ -69,17 +71,25 @@ async function login(req, res){
 
 
 
-async function testController(req, res){
+async function userProfile(req, res){
     
-    const user =new User(req.body)
-    const savedUser = await user.save();
+    const user = req.user
 
-    return res.status(201).send({data: savedUser, message:'user saved'})
+    console.log(user)
+    if(user){
+        
+        return responseApi(res, 200, user, "user profile found ")
+    }else{
+        
+        return responseApi(res, 400, null, "no user profile found")
+
+    }
+
 
 }
 
 module.exports = {
     register,
     login,
-    testController
+    userProfile
 }

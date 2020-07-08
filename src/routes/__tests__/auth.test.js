@@ -8,7 +8,7 @@ const request = require('supertest')
 const userId = new mongoose.Types.ObjectId();
 const url = "/api/auth"
 
-test("Create new user" , async()=>{
+test("Register user" , async()=>{
    
     const user = buildUser();
 
@@ -34,3 +34,24 @@ test("Login user", async() => {
 })
 
 
+test("Fetch user profile ", async ()=> {
+
+
+    const user = buildUser();
+    let registerResponse =     await request(app).post(`${url}/register`).send(user);
+
+    const token = registerResponse.body.data.token
+
+    const profileResponse = await request(app)
+                                    .get(`${url}/me`)
+                                    .set('Authorization', `Bearer ${token}`)
+                                    .send();
+
+//    const response = await request(app)
+  //                          .post(`${url}/me`)
+  //                          .send();
+
+   // console.log(response)
+    //expect(response.statusCode).toEqual(200);
+
+})
