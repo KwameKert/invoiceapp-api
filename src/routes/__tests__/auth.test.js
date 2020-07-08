@@ -42,7 +42,6 @@ test("Fetch user profile ", async ()=> {
 
     let token = registerResponse.body.data.token
 
-    console.log(token)
     const profileResponse = await request(app)
                                     .get(`${url}/me`)
                                     .set('Authorization', `Bearer ${token}`)
