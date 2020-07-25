@@ -19,8 +19,6 @@ function returnExpectations(response, statusCode){
 
 
 
-
-
 test("Fetch user by id", async () =>{
     
     let req = buildReq({body: {...newUser, _id, ... loginForm({username: 'kwamekert', password: 'kwamepass'})}});
@@ -40,8 +38,6 @@ test("Fetch user by id", async () =>{
 })
 
 test("fetch user without id", async ()=> {
-
-
     let req = buildReq({body: {...newUser, ... loginForm({username: 'kwamekert', password: 'kwamepass'})}});
     let res = buildRes();
 
@@ -68,14 +64,12 @@ test("fetch user list", async ()=>{
 
     returnExpectations(firstRes, 201);
 
-
     let secondReq = buildReq({body : {...newUser, email: 'kwameasante', username: 'kwamephil'}})
     let secondRes = buildRes();
 
     await AuthController.register(secondReq, secondRes);
 
     returnExpectations(secondRes, 201);
-
 
     let thirdReq = buildReq({body : {...newUser, email: 'kwamkert', username: 'kwamekwame'}})
     let thirdRes = buildRes();
@@ -84,11 +78,8 @@ test("fetch user list", async ()=>{
 
     returnExpectations(thirdRes, 201);
 
-
-
     let userListReq = buildReq();
     let userListRes = buildRes();
-
 
     await UserController.fetchUsers(userListReq, userListRes);
 
@@ -103,7 +94,6 @@ test("no users found ", async()=>{
     let res = buildRes();
 
     await UserController.fetchUsers(req, res);
-
     returnExpectations(res, 204);
 
 } )

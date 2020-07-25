@@ -9,8 +9,6 @@ let newUser = {
 }
 
 
-
-
 test("create and save user", async()=>{
     const validUser = new User(newUser);
     const saveUser = await validUser.save();

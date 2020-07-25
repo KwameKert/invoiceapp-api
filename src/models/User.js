@@ -25,9 +25,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    salt: {
-        type: String, 
-        require: true
+    status: {
+        type: Boolean, 
+        default: true
     }
 
 })

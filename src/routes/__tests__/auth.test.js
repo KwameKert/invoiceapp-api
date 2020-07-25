@@ -11,10 +11,9 @@ const url = "/api/auth"
 test("Register user" , async()=>{
    
     const user = buildUser();
+    const response = await request(app).post(`${url}/register`).send(user)
 
-    const response =    await request(app).post(`${url}/register`).send(user)
-
-   expect(response.statusCode).toEqual(201);
+    expect(response.statusCode).toEqual(201);
 })
 
 
@@ -50,3 +49,15 @@ test("Fetch user profile ", async ()=> {
     expect(profileResponse.statusCode).toEqual(200);
 
 })
+
+test("fetch user profile without authentication" , async ()=>{
+
+    const profileResponse = await request(app)
+                                    .get(`${url}/me`)
+                                    .send();
+
+    expect(profileResponse.statusCode).toEqual(401);
+})
+
+
+
