@@ -35,6 +35,7 @@
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
+    "loglevel": "^1.6.8",
     "mongodb-memory-server": "^6.6.1",
     "mongoose": "^5.9.20",
     "nodemon": "^2.0.4"

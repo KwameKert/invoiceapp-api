@@ -9,7 +9,6 @@ let  token ='' ;
 
 beforeEach(async()=> {
     
-
     const registerResponse = await request(app)
                             .post('/api/auth/register')
                             .send({ ...user });

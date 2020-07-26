@@ -9,7 +9,6 @@ let newUser = {};
 let  token ='' ;
 
 beforeEach(async()=> {
-    
     const registerResponse = await request(app)
                             .post('/api/auth/register')
                             .send({ ...user });
@@ -20,12 +19,20 @@ beforeEach(async()=> {
 })
 const url = '/api/invoice'
 
-test("Post new Invoice", async()=>{
+test("Post new Invoice as a user", async()=>{
 
     const invoiceForm = buildInvoiceForm();
-    const invoiceResponse = await request(app).get(`${url}`).set('Authorization', `Bearer ${token}` ).send()
+    const invoiceResponse = await request(app).post(`${url}/user`).set('Authorization', `Bearer ${token}` ).send(invoiceForm)
+
+    expect(invoiceResponse.statusCode).toBe(201)
+
+})
 
 
-    expect(invoiceResponse.statusCode).toBe(200)
+test("Post new Invoice", async()=>{
+    const invoiceForm = buildInvoiceForm();
+    const invoiceResponse = await request(app).post(`${url}/` ).send(invoiceForm)
+
+    expect(invoiceResponse.statusCode).toBe(201)
 
 })
