@@ -39,7 +39,6 @@ test("Post invoice as nonuser should return 201",  async()=>{
 
     await InvoiceController.createInvoice(req, res);
 
-    console.log(res)
     returnExpectations(res, 201)
 
 });
