@@ -11,6 +11,9 @@ const invoiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    receiverAddress: {
+        type: String
+    },
     receiverName: {
         type: String, 
         trim: true,

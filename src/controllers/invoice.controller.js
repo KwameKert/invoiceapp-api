@@ -14,7 +14,10 @@ async function createInvoice(req, res ){
        
         if(req.user){
              newInvoice = new Invoice({...req.body,owner:req.user._id })
+       
+
         }
+        
 
         const savedInvoice = await newInvoice.save();
         responseApi(res, 201, savedInvoice, "invoice added successfully");
