@@ -42,10 +42,30 @@ function loginForm(overides){
 
 }
 
+function buildInvoiceForm(overides){
+    return {
+        senderMail: faker.internet.email(),
+        senderName: faker.name.findName(),
+        receiverMail: faker.internet.email(),
+        receiverName: faker.name.findName(),
+        currency: faker.finance.currencySymbol(),
+        notes: faker.lorem.sentence(),
+        amount: faker.finance.amount(),
+        items: [
+            {name: faker.lorem.word(), 
+             quantity: faker.random.number(),
+                unitPrice: faker.finance.amount()
+            }
+        ],
+        ...overides
+    }
+}
+
 module.exports = {
     buildUser,
     buildReq,
     buildRes,
-    loginForm
+    loginForm,
+    buildInvoiceForm
 
 }

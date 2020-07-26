@@ -18,7 +18,6 @@ test("Register user" , async()=>{
 
 test("Login user", async() => {
 
-
     const user = buildUser();
     await request(app).post(`${url}/register`).send(user);
 
