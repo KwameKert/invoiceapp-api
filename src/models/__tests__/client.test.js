@@ -19,6 +19,4 @@ test("save client ", async()=>{
 
     expect(savedClient._id).toBeDefined();
     expect(savedClient.address).toBe(newClient.address);
-
-
 })

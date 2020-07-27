@@ -42,6 +42,16 @@ function loginForm(overides){
 
 }
 
+function buildClientForm(overides){
+    return {
+        name: faker.name.findName(),
+        email: faker.internet.email(),
+        address: faker.address.streetName(),
+        status: 'active',
+        owner: getId
+    }
+}
+
 function buildInvoiceForm(overides){
     return {
         senderMail: faker.internet.email(),
@@ -66,6 +76,7 @@ module.exports = {
     buildReq,
     buildRes,
     loginForm,
-    buildInvoiceForm
+    buildInvoiceForm,
+    buildClientForm
 
 }
